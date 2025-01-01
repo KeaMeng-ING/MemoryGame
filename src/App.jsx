@@ -1,33 +1,48 @@
 import "./App.css";
 import Header from "./components/Header";
 import { useEffect, useState } from "react";
+import Card from "./components/Card";
 
 function App() {
-  const [pokemonDetails, setPokemonDetails] = useState(null);
-  // Calling API
-  useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
-      .then((response) => response.json())
-      .then((json) => {
-        const results = json.results;
-        const firstPokemonUrl = results[0].url;
-        console.log(firstPokemonUrl);
+  const [cards, setCards] = useState([]);
 
-        // Fetching from the first Pokémon's URL
-        return fetch(firstPokemonUrl);
-      })
-      .then((response) => response.json())
-      .then((details) => {
-        setPokemonDetails(details.sprites);
-        console.log(details);
-      })
-      .catch((error) => console.error(error));
+  // Fetching from API
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      try {
+        const response = await fetch(
+          "https://pokeapi.co/api/v2/pokemon?limit=20"
+        );
+        const data = await response.json();
+
+        const pokemonDetails = await Promise.all(
+          data.results.map(async (pokemon) => {
+            const res = await fetch(pokemon.url);
+            return res.json();
+          })
+        );
+
+        const cardData = pokemonDetails.map((pokemon) => ({
+          id: pokemon.id,
+          name: pokemon.name,
+          image: pokemon.sprites.front_default,
+        }));
+
+        setCards(cardData);
+      } catch (error) {
+        console.error("Error fetching Pokemon:", error);
+      }
+    };
+
+    fetchPokemon();
   }, []);
 
-  console.log(pokemonDetails);
+  // console.log(pokemonDetails);
+
   return (
     <>
       <Header />
+      <Card cards={cards} />
     </>
   );
 }
