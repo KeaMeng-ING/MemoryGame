@@ -1,9 +1,7 @@
-import React from "react";
-
-export default function CardList({ card }) {
+export default function CardList({ card, onClick }) {
   return (
-    <div className="card">
-      <img src={card.image} alt="" />
+    <div className="card" onClick={() => onClick(card.id)}>
+      <img src={card.image} alt={card.name} />
       <h2>{card.name}</h2>
     </div>
   );
