@@ -11,7 +11,7 @@ function App() {
     const fetchPokemon = async () => {
       try {
         const response = await fetch(
-          "https://pokeapi.co/api/v2/pokemon?limit=20"
+          "https://pokeapi.co/api/v2/pokemon?limit=10"
         );
         const data = await response.json();
 
@@ -22,10 +22,12 @@ function App() {
           })
         );
 
+        console.log(pokemonDetails);
+
         const cardData = pokemonDetails.map((pokemon) => ({
           id: pokemon.id,
           name: pokemon.name,
-          image: pokemon.sprites.front_default,
+          image: pokemon.sprites.other["official-artwork"]["front_default"],
         }));
 
         setCards(cardData);
@@ -37,12 +39,14 @@ function App() {
     fetchPokemon();
   }, []);
 
-  // console.log(pokemonDetails);
-
   return (
     <>
       <Header />
-      <Card cards={cards} />
+      <main className="card-container">
+        {cards.map((card) => (
+          <Card key={card.id} card={card} />
+        ))}
+      </main>
     </>
   );
 }
