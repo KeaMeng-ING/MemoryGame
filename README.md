@@ -2,7 +2,7 @@
 
 A fun and interactive memory challenge where players test their focus and recall by selecting unique Pokémon cards. Each correct selection increases your score — but if you click the same card twice, the game resets. Aim for the highest score possible by remembering and avoiding duplicates!
 
-![Pokémon Memory Game Screenshot](/images/cover.png)
+![Pokémon Memory Game Screenshot](/cover.png)
 
 ## 🚀 Live Demo
 
