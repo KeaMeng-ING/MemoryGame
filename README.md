@@ -1,8 +1,30 @@
-# React + Vite
+# Pokémon Memory Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fun and interactive memory challenge where players test their focus and recall by selecting unique Pokémon cards. Each correct selection increases your score — but if you click the same card twice, the game resets. Aim for the highest score possible by remembering and avoiding duplicates!
 
-Currently, two official plugins are available:
+![Pokémon Memory Game Screenshot](/images/project3.jpg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
+
+👉 [Play it here](https://memorygame-keameng.netlify.app/)
+
+## ⚙️ Features
+
+- Click on Pokémon cards without repeating any selection.
+- Score increases with each unique click.
+- Selecting a duplicate resets the game and score.
+- Simple, responsive UI styled with Tailwind CSS.
+
+## 🛠️ Built With
+
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+## 📌 How to Play
+
+1. Click any Pokémon card to start.
+2. Keep selecting new Pokémon each round.
+3. If you click the same Pokémon twice, your score resets.
+4. Try to beat your own high score!
+
+
